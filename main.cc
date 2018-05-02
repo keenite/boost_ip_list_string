@@ -16,11 +16,7 @@ typedef list<my_string, ListAllocator> MyList;
 
 int main(int argc, char *argv[])
 {
-    struct shm_remove
-    {
-        shm_remove() { shared_memory_object::remove("MySharedMemory1"); }
-        ~shm_remove(){ shared_memory_object::remove("MySharedMemory1"); }
-    } remover;
+    shared_memory_object::remove("MySharedMemory1");
 
     managed_shared_memory segment(create_only, "MySharedMemory1", 65536);
 
